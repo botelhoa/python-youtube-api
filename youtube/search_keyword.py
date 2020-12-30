@@ -60,7 +60,7 @@ class searchVideo:
 
 
     def get_channel_videos(self):
-        url_response = json.loads(openURL(YOUTUBE_SEARCH_URL, self.params)))
+        url_response = json.loads(openURL(YOUTUBE_SEARCH_URL, self.params))
         nextPageToken = url_response.get("nextPageToken")
         self.load_search_res(url_response)
 
@@ -73,7 +73,7 @@ class searchVideo:
 
     def create_df(self):
         if os.path.exists(SAVE_PATH+self.save_folder) == False:
-            os.mkdir(SAVE_PATH+self.save_folder)
+            os.makedirs(SAVE_PATH+self.save_folder)
 
         df = pd.DataFrame().from_dict(self.videos)
         df.to_csv(SAVE_PATH+self.save_folder+"search_term_videos.csv")

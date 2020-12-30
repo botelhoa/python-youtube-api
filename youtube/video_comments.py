@@ -62,7 +62,7 @@ class VideoComment:
 
     def create_df(self):
         if os.path.exists(SAVE_PATH+self.save_folder) == False:
-            os.mkdir(SAVE_PATH+self.save_folder)
+            os.makedirs(SAVE_PATH+self.save_folder)
 
             df = pd.DataFrame().from_dict(self.comments)
             df["videoId"] = self.params['videoId']
